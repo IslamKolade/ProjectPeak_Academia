@@ -1,0 +1,62 @@
+{% load static %}
+<div class="col-lg-7">
+    <div class="section-title position-relative mb-4">
+        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Contact Us for Custom Projects and Professional Writing Services</h6>
+        <h5 style="font-size: 13px;" class="display-4">Tell us your unique project requirements or hire our professional writers for bespoke content creation.</h5>
+    </div>
+    <div class="contact-form">
+        <form action="{% url 'contact_form_submission' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required" name="name" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Email" name="email" autocomplete="email" required="required">
+            </div>
+            <div class="form-group">
+                <input min="11" type="number" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Phone Number" name="phone_number" autocomplete="phone_number" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Course of Study" required="required" name="course_of_study" autocomplete="course_of_study">
+            </div>
+            <div class="form-group">
+                <select class="form-control border-top-0 border-right-0 border-left-0 p-0" required="required" name="education_level" autocomplete="off">
+                    <option value="" selected disabled>Select Education Level</option>
+                    <option value="BSC">BSC</option>
+                    <option value="HND">HND</option>
+                    <option value="OND/NCE">OND/NCE</option>
+                    <option value="PGD/MBA/MSC">PGD/MBA/MSC</option>
+                </select>
+            </div>                        
+            <div class="form-group">
+                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Project Title" required="required" name="project_title" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Your Department / Project Format (if any)" name="project_details" autocomplete="off" required="required"></textarea>
+            </div>
+            <div>
+                <button class="btn btn-primary py-3 px-5" type="submit">Submit Request</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    window.addEventListener('pageshow', function(event) {
+        const textFields = document.querySelectorAll('.form-control');
+        textFields.forEach(function(field) {
+            field.value = '';
+        });
+
+        const textarea = document.querySelector('textarea[name="project_details"]');
+        if (textarea) {
+            textarea.value = '';
+        }
+
+        const selectField = document.querySelector('select[name="educational_level"]');
+        if (selectField) {
+            selectField.selectedIndex = 0;
+        }
+    });
+</script>
+
+

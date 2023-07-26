@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .project_link {
+        text-decoration:none;
+        color: #000;
+    }
+    .project_link:hover {
+        text-decoration:none;
+        color: #000;
+    }
+    .project-list-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .project-icon {
+        font-size: 24px;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .project-name {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .chevron-icon {
+        color: #007bff;
+        margin-left: auto;
+        margin-right: 5px;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+    .hand-icon {
+        font-size: 30px;
+        color: #007bff;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 1.5s infinite;
+      }
+    
+      /* Keyframes for the animation */
+    @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(20px);
+    }
+    60% {
+        transform: translateY(10px);
+    }
+    }
+</style>
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Projects</h1>
+            <div class="d-inline-flex text-white mb-5">
+                <p class="m-0 text-uppercase"><a class="text-white" onclick='showPreloader()' href="/">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Projects</p>
+            </div>
+            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+                <form action="{% url 'search_projects' %}" method="get">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
+                        </div>
+                        <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
+                        <div class="input-group-append" onclick='showPreloader()'>
+                            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <div class="section-title text-center position-relative mb-5">
+        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2"><i class="fas fa-book"></i>All Projects</h6>
+        <h1 class="display-4">Explore Our Projects</h1>
+    </div>
+
+    <div class="container">
+        {% if projects %}
+            {% for project in projects %}
+            <a href="{% url 'project_details' project.url %}" class="project_link" onclick='showPreloader()'>
+            <div class="project-list-item">
+                <i class="project-icon fas fa-book"></i>
+                <span class="project-name">{{ project.name }}</span>
+                <i class="chevron-icon fas fa-chevron-right"></i>
+            </div>
+            </a>
+            <hr>
+            {% endfor %}
+        {% else %}
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="display-4">No Projects Yet!</h6>
+            </div>
+            <h6 class="display-4" style="font-size:20px;">Currently, there are no projects available for this course. We are continually updating our offerings, so please check back later to see if any projects have been added. Thank you for your interest in our courses, and we look forward to sharing exciting projects with you soon!</h6>
+        {% endif %}
+    </div>
+    <br><br>
+    {% include 'faq_content.html' %}
+    <br><br>
+    {% include 'testimonials_content.html' %} 
+    <br><br>
+    {% include 'contact_form.html' %}
+
+{% endblock %}
+
+    

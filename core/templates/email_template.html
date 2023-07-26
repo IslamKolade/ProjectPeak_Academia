@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project Request Received</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #007bff;
+    }
+    h1 {
+      color: #007bff;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Project Request Received</h1>
+    <p>Dear {{name}},</p>
+    <p>Thank you for submitting your project request. We have received the following details:</p>
+    <p>Name: {{name}}</p>
+    <p>Email: {{email}}</p>
+    <p>Phone Number: {{phone_number}}</p>
+    <p>Course of Study: {{course_of_study}}</p>
+    <p>Education Level: {{education_level}}</p>
+    <p>Project Title: {{project_title}}</p>
+    <p>Project Details: {{project_details}}</p>
+    <p>We will review your request and get back to you shortly with further details.</p>
+    <p>If you have any questions or need immediate assistance, please feel free to <a target="_blank" href="https://wa.me/{{ whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">contact us.</a></p>
+    <p>You can go through our FAQs:</p>
+    {% include 'faq_content.html' %}
+    <p>Thank you for choosing ProjectPeak Academia!</p>
+    <p>Best Regards,</p>
+    <p>The ProjectPeak Academia Team</p>
+    <a href="https://www.projectpeakacademia.com" class="cta-button">Visit Website</a>
+  </div>
+</body>
+</html>

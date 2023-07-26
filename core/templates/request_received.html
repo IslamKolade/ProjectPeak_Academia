@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .message-container {
+    text-align: center;
+  }
+
+  .message-icon {
+    font-size: 80px;
+    color: #007bff;
+    width: 94px;
+    height: 94px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .tick-icon {
+    font-size: 40px;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+  }
+
+  .message-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .send-another-btn {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .send-another-btn:hover {
+    color: #008368;
+  }
+  
+  .hand-icon {
+    font-size: 40px;
+    color: #007bff;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 1.5s infinite;
+  }
+
+  /* Keyframes for the animation */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(20px);
+    }
+    60% {
+      transform: translateY(10px);
+    }
+  }
+</style>
+
+<div class="message-container">
+  <div class="message-icon">
+    <i class="fas fa-envelope"></i>
+    <div class="tick-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+  </div>
+  <div class="message-text">Request Received</div><br><br>
+  <div>
+    <div class="hand-icon">
+      <i class="fas fa-hand-point-down"></i>
+    </div><br>
+    <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects."><button class="action-button">Need Quick Help <br> Chat with us now!</button></a>
+    <br>
+    <a href="mailto:{{projectpeak_academia.email}}" style="text-decoration:none; color:white; font-size:14px;"><small><i class="fa fa-envelope mr-2"></i>{{projectpeak_academia.email}}</small></a>
+    <br>
+    <button class="send-another-btn" onclick="goBack()">Send another request?</button>
+  </div>
+</div>
+
+{% include 'faq_content.html' %}
+
+<!--Back to Previous Page.-->
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock content %}

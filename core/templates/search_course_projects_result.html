@@ -1,0 +1,133 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<style>
+    .project_link {
+        text-decoration:none;
+        color: #000;
+    }
+    .project_link:hover {
+        text-decoration:none;
+        color: #000;
+    }
+    .project-list-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .project-icon {
+        font-size: 24px;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .project-name {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .chevron-icon {
+        color: #007bff;
+        margin-left: auto;
+        margin-right: 5px;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+    .hand-icon {
+        font-size: 30px;
+        color: #007bff;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 1.5s infinite;
+      }
+    
+      /* Keyframes for the animation */
+    @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(20px);
+    }
+    60% {
+        transform: translateY(10px);
+    }
+    }
+</style>
+
+<div class="section-title text-center position-relative mb-5">
+    <div style="float: left; font-size: 20px; cursor: pointer;">
+    <a onclick='showPreloader()' href="/" style="text-decoration: none; font-size:15px;">
+        <i class="chevron-icon fas fa-home"></i> Home
+    </a>
+    <a onclick='showPreloader()' href="{% url 'course_projects' course_name.url %}" style="text-decoration: none; font-size:15px;">
+        &nbsp;&nbsp;<i class="chevron-icon fas fa-chevron-right"></i>&nbsp; <i class="fas fa-graduation-cap"></i>{{query_course}}
+    </a>
+    </div>
+
+    <br><br>
+    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2"><i class="fas fa-graduation-cap"></i>{{query_course}} Search Results</h6>
+
+    <div class="hand-icon">
+        <i class="fas fa-hand-point-down"></i>
+    </div>
+</div>
+<h6 class="display-4 container" style="word-wrap: break-word; font-size: 25px;">Search Result for "{{query}}"</h6>
+
+<div class="mx-auto mb-4" style="width: 100%; max-width: 600px; border-radius:20px;">
+    <form action="{% url 'search_course_projects' %}" method="get">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
+        </div>
+        <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search {{query_course}} Projects">
+        <input type="text" name="q-course_projects" style="display: none;" value="{{query_course}}">
+        <div class="input-group-append">
+            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<div class="container">
+    {% if results %}
+    {% for project in results %}
+        <a onclick='showPreloader()' href="{% url 'project_details' project.url %}" class="project_link">
+        <div class="project-list-item">
+            <i class="project-icon fas fa-book"></i>
+            <span class="project-name">{{ project.name }}</span>
+            <i class="chevron-icon fas fa-chevron-right"></i>
+        </div>
+        </a>
+        <hr>
+    {% endfor %}
+    {% else %}
+        <div class="section-title text-center position-relative mb-5">
+            <h6 class="display-4">Project Not Found!</h6>
+        </div>
+        <h6 class="display-4" style="font-size:20px;">
+            Oops! We couldn't find your project on our website. <br>
+
+            Don't worry! Our team is here to help. <br>
+
+            If your project is not listed, or you need a custom solution tailored to your requirements, feel free to contact us. 
+            <br><br>
+            We're more than happy to assist you in bringing your unique project to life! <br>
+
+            Contact us via email at <a href="mailto:{{projectpeak_academia.email}}">{{projectpeak_academia.email}}</a> or call <a href="tel:{{projectpeak_academia.phone_number}}">{{projectpeak_academia.phone_number}}</a> or send us a message on <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">WhatsApp</a>. 
+            <br>
+            We look forward to working with you!
+        </h6>
+    {% endif %}
+</div>
+
+<br><br>
+    {% include 'contact_form.html' %}
+{% endblock content %}

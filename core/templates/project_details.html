@@ -1,0 +1,337 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+
+    th {
+      border-bottom: 2px solid #007bff;
+      background-color: #f2f2f2;
+      padding: 8px;
+      text-align: left;
+    }
+
+    td {
+      border-bottom: 1px solid #007bff;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+<style>
+    .project_link {
+        text-decoration:none;
+        color: #000;
+    }
+    .project_link:hover {
+        text-decoration:none;
+        color: #000;
+    }
+    .project-list-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .project-icon {
+        font-size: 24px;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .project-name {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .chevron-icon {
+        color: #007bff;
+        margin-left: auto;
+        margin-right: 5px;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+</style>
+<style>
+    .action-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+    .hand-icon {
+        font-size: 30px;
+        color: #007bff;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(20px);
+        }
+        60% {
+            transform: translateY(10px);
+        }
+    }
+</style>
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-1">Project Details</h1>
+        <div class="d-inline-flex text-white mb-5">
+            <p class="m-0 text-uppercase"><a class="text-white" href="/">Home</a></p>
+            <i class="fa fa-angle-double-right pt-1 px-3"></i>
+            <p class="m-0 text-uppercase">Project Details</p>
+        </div>
+        <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+            <form action="{% url 'search_projects' %}" method="get">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
+                    </div>
+                    <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
+                    <div class="input-group-append" onclick='showPreloader()'>
+                        <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="section-title text-center position-relative mb-5">
+    <div style="float: left; font-size: 20px; cursor: pointer;">
+    <a onclick='showPreloader()' href="/" style="text-decoration: none; font-size:15px;">
+        <i class="chevron-icon fas fa-home"></i> Home
+    </a>
+    <a onclick='showPreloader()' href="{% url 'course_projects' project.course.url %}" style="text-decoration: none; font-size:15px;">
+        &nbsp;&nbsp;<i class="chevron-icon fas fa-chevron-right"></i>&nbsp; <i class="fas fa-graduation-cap"></i>{{project.course}}
+    </a>
+    </div>
+</div>
+
+<!-- Detail Start -->
+<div class="container-fluid py-1">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="mb-5">
+                    <div class="section-title position-relative mb-5">
+                        <h6 style="font-size:25px;" class="d-inline-block position-relative text-secondary text-uppercase pb-2"><i class="fas fa-book"></i>Project Details</h6>
+                        <h1 class="display-4">{{project.name}}</h1>
+                    </div>
+                    <div>
+                        <a target="_blank" class="btn btn-block btn-secondary py-3 px-5" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%0AI%20want%20to%20order%20the%20{{project.name}}%20project%20for%20&#8358;{{project.price}}%20in%20the%20{{project.course}}%20course.%0APlease%20process%20my%20order.%20Thank%20you.%0A%0ACourse%20Link:%20http://localhost:8000{% url 'project_details' project.url %}">Get Project</a>
+                    </div>
+                    <img class="img-fluid rounded w-100 mb-4" src="{% static 'img/header.jpg' %}" alt="Image">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Abstract</h6>
+                    <p>{{project.abstract}}</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="bg-primary mb-5 py-3">
+                    <h3 class="text-white py-3 px-4 m-0">Project Information</h3>
+                    <div class="d-flex justify-content-between border-bottom px-4">
+                        <h6 class="text-white my-3">Format</h6>
+                        <h6 class="text-white my-3">{{project.format}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom px-4">
+                        <h6 class="text-white my-3">Chapter</h6>
+                        <h6 class="text-white my-3">{{project.chapters}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom px-4">
+                        <h6 class="text-white my-3">Pages</h6>
+                        <h6 class="text-white my-3">{{project.pages}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom px-4">
+                        <h6 class="text-white my-3">Rating</h6>
+                        <h6 class="text-white my-3">{{project.rating}}</h6>
+                    </div>
+                    <h6 style="font-size: 14px;" class="text-white py-3 px-4 m-0">{{project.users_that_found_this_project_useful}} users found this project useful.</h6>
+                    <h5 class="text-white py-3 px-4 m-0">Project Price: &#8358;{{project.price}}</h5>
+                    <div class="py-3 px-4">
+                        <a target="_blank" class="btn btn-block btn-secondary py-3 px-5" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%0AI%20want%20to%20order%20the%20{{project.name}}%20project%20for%20&#8358;{{project.price}}%20in%20the%20{{project.course}}%20course.%0APlease%20process%20my%20order.%20Thank%20you.%0A%0ACourse%20Link:%20http://localhost:8000{% url 'project_details' project.url %}">Get Project</a>
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                      <th>Bank Name</th>
+                      <th>Account Name</th>
+                      <th>Account Number</th>
+                    </tr>
+                    <tr>
+                      <td>{{projectpeak_academia.bank_name}}</td>
+                      <td>{{projectpeak_academia.account_name}}</td>
+                      <td>{{projectpeak_academia.account_number}}</td>
+                    </tr>
+                </table>
+                <p>Make payment and send receipt via <a href="mailto:{{projectpeak_academia.email}}">email</a> or <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">WhatsApp</a> for project delivery. Thank you!</p>
+
+                <br><br>
+                <div style="text-align:center;">
+                <h6 class="mb-3">
+                    {{project.course}}
+                    <br>
+                    <hr>
+                    <br>
+                    Not the project you are looking for?
+                    <br><br>
+                    <button class="action-button">Hire a Professional Writer</button>
+                </h6>
+                <div class="hand-icon" id="backhere">
+                    <i class="fas fa-hand-point-down"></i>
+                </div>
+                </div><br>
+                {% include 'contact_form.html' %} 
+            </div>
+              
+            <div class="mb-5" style="margin-top: 50px;">
+                <h4 class="mb-3">HOW TO GET THE COMPLETE PROJECT ON {{project.course}}</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <p class="text-decoration-none h6 m-0">Click <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%0AI%20want%20to%20order%20the%20{{project.name}}%20project%20for%20&#8358;{{project.price}}%20in%20the%20{{project.course}}%20course.%0APlease%20process%20my%20order.%20Thank%20you.%0A%0ACourse%20Link:%20http://localhost:8000{% url 'project_details' project.url %}">here</a> to get the project.</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <p class="text-decoration-none h6 m-0">Chat with us on <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">WhatsApp</a></p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <p class="text-decoration-none h6 m-0">All the projects featured on our website undergo meticulous research and are prepared by experts in their respective fields.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <style>
+                .faq-icon {
+                    font-size: 18px;
+                    margin-right: 10px;
+                }
+            </style>
+            
+            <div class="mb-5" style="margin-top: 50px;">
+                <h4 class="mb-3">FREQUENTLY ASKED QUESTIONS ABOUT {{ project.name }} Project</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>How can I get the complete project on {{ project.name }}?</strong><br>
+                        To get the complete project, simply click <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%0AI%20want%20to%20order%20the%20{{project.name}}%20project%20for%20&#8358;{{project.price}}%20in%20the%20{{project.course}}%20course.%0APlease%20process%20my%20order.%20Thank%20you.%0A%0ACourse%20Link:%20http://localhost:8000{% url 'project_details' project.url %}">here.</a>
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>What if I have a fresh topic not available on the website?</strong><br>
+                        No worries, you can <a href="#backhere">hire a professional writer</a> to work on your custom project.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>How fast can I get the complete project?</strong><br>
+                        We ensure prompt delivery of projects. You will receive your complete project within 15 minutes.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>Is the project a complete research or just materials?</strong><br>
+                        The project we provide is complete and comprehensive project, containing all the necessary research and materials for your study.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>Can I change the case study in the project to suit my needs?</strong><br>
+                        Yes, you can <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">contact</a> us to discuss any changes or customizations you need for the project.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>How will I receive the complete project once payment is confirmed?</strong><br>
+                        Once your payment is confirmed, the complete project will be sent to your email or WhatsApp, whichever you prefer.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>What if my project supervisor makes changes to the topic?</strong><br>
+                        If your project supervisor requests any changes to the topic, you can <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">contact us</a>, and we'll make the necessary adjustments.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>Do you also assist students with assignments and proposals?</strong><br>
+                        Yes, we provide assistance with assignments and proposals. Feel free to <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">contact us</a> for more details.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>What if I don't have a project idea yet? Can you mentor me?</strong><br>
+                        Absolutely! We offer mentoring services to help you develop a unique and exciting project idea based on your interests and academic goals.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>How can I trust the projects on your website?</strong><br>
+                        You can trust our projects as they are well-researched by professionals in their respective fields. We uphold the highest standards of academic integrity and quality.
+                        We take pride in delivering high-quality projects prepared by experts. Our reputation and customer reviews speak for themselves. You can trust us to provide you with exceptional work.
+                    </li>
+                    <li class="list-group-item px-0">
+                        <i class="faq-icon fas fa-question-circle"></i>
+                        <strong>Can ProjectPeak Academia be trusted to deliver?</strong><br>
+                        Absolutely! ProjectPeak Academia is a registered company with the Corporate Affairs Commission(CAC) under registration number <i class="fas fa-registered"></i> 6862967. You can be assured of our legitimacy and commitment to maintaining the highest standards of professionalism and integrity. Rest assured, when you engage with us, you are dealing with a reputable and trustworthy organization.
+                    </li>
+                </ul>
+            </div>
+        </div>
+            
+        {% if related_projects %}
+        <h2 class="mb-3">Related Projects</h2>
+        <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
+            {% for related_project in related_projects %}
+            <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="{% url 'project_details' related_project.url %}">
+                <img class="img-fluid" src="{% static 'img/logo.jpg' %}" alt="ProjectPeak Academia Logo">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">{{related_project.name}}</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-2">
+                            <span class="text-white"><i class="fa fa-book mr-1"></i>{{related_project.pages}}</span>
+                            <span class="text-white"><i class="fa fa-star mr-1"></i>{{related_project.rating}}
+                                <small><i class="fa fa-eye mr-1"></i>({{related_project.users_that_found_this_project_useful}})</small></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div style="margin-top: 50px;">
+        {% for project in related_projects %}
+        <a onclick='showPreloader()' href="{% url 'project_details' project.url %}" class="project_link">
+        <div class="project-list-item">
+            <i class="project-icon fas fa-book"></i>
+            <span class="project-name">{{ project.name }}</span>
+            <i class="chevron-icon fas fa-chevron-right"></i>
+        </div>
+        </a>
+        <hr>
+        {% endfor %}
+        </div>
+
+        {% endif %}
+    </div>
+</div>
+<!-- Detail End -->
+{% include 'testimonials_content.html' %}
+{% endblock content %}

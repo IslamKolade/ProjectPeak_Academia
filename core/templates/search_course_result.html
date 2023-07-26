@@ -1,0 +1,99 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    .projects_link {
+        text-decoration:none;
+        color: #000;
+    }
+    .projects_link:hover {
+        text-decoration:none;
+        color: #000;
+    }
+   
+    .course-list-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .course-icon {
+        font-size: 24px;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .course-name {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .project-count {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .chevron-icon {
+        color: #007bff;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+</style>
+
+
+<div class="section-title text-center position-relative mb-5">
+    <div style="float: left; font-size: 20px; cursor: pointer;">
+    <a onclick='showPreloader()' href="/" style="text-decoration: none; font-size:15px;">
+        <i class="chevron-icon fas fa-home"></i> Home
+    </a>
+    </div>
+    <br><br>
+    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2"><i class="fas fa-graduation-cap"></i>Course Search Results</h6>
+</div>
+<h6 class="display-4 container" style="word-wrap: break-word;">Search Result for "{{query}}"</h6>
+<div class="mx-auto mb-4" style="width: 100%; max-width: 600px; border-radius:20px;">
+    <form action="{% url 'search_courses' %}" method="get">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Courses</button>
+        </div>
+        <input type="text" name="q-courses" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Courses">
+        <div class="input-group-append">
+            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<div class="container">
+    {% if results %}
+        {% for course in results %}
+        <a onclick='showPreloader()' href="{% url 'course_projects' course.url %}" class="projects_link">
+        <div class="course-list-item">
+            <i class="course-icon fas fa-graduation-cap"></i>
+            <span class="course-name">{{ course.name }}</span>
+            <span class="project-count">{{ course.projects_count }}</span>
+            <i class="chevron-icon fas fa-chevron-right"></i>
+        </div>
+        </a>
+        <hr>
+        {% endfor %}
+    {% else %}
+        <div class="section-title text-center position-relative mb-5">
+            <h6 class="display-4">Course Not Found!</h6>
+        </div>
+        <h6 class="display-4" style="font-size:20px;">We couldn't find any course that matches your search query. Please check the spelling or try a different search.
+            <br>
+            Contact us via email at <a href="mailto:{{projectpeak_academia.email}}">{{projectpeak_academia.email}}</a> or call <a href="tel:{{projectpeak_academia.phone_number}}">{{projectpeak_academia.phone_number}}</a> or send us a message on <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects.">WhatsApp</a>. 
+            <br>
+            We look forward to working with you!
+        </h6>
+    {% endif %}
+</div>
+<br><br>
+    {% include 'contact_form.html' %}
+{% endblock content %}

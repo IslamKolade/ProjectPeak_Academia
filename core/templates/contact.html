@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Contact</h1>
+            <div class="d-inline-flex text-white mb-5">
+                <p class="m-0 text-uppercase"><a class="text-white" onclick='showPreloader()' href="/">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Contact</p>
+            </div>
+            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px; border-radius:20px;">
+                <form action="{% url 'search_courses' %}" method="get">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Courses</button>
+                        </div>
+                        <input type="text" name="q-courses" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Courses">
+                        <div class="input-group-append" onclick='showPreloader()'>
+                            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+                <form action="{% url 'search_projects' %}" method="get">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
+                        </div>
+                        <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
+                        <div class="input-group-append" onclick='showPreloader()'>
+                            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Contact Start -->
+    {% include 'contact_content.html' %}
+    <!-- Contact End -->
+    <br><br>
+    {% include 'faq_content.html' %}
+    <br><br>
+    {% include 'testimonials_content.html' %}
+
+{% endblock %}

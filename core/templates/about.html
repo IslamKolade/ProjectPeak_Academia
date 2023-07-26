@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">About</h1>
+            <div class="d-inline-flex text-white mb-5">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/" onclick='showPreloader()'>Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">About</p>
+            </div>
+            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px; border-radius:20px;">
+                <form action="{% url 'search_courses' %}" method="get">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Courses</button>
+                        </div>
+                        <input type="text" name="q-courses" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Courses">
+                        <div class="input-group-append" onclick='showPreloader()'>
+                            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+                <form action="{% url 'search_projects' %}" method="get">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
+                        </div>
+                        <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
+                        <div class="input-group-append" onclick='showPreloader()'>
+                            <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="{% static 'img/about.jpg' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
+                        <h1 class="display-4">First Choice For Projects That Ignite Imagination</h1>
+                    </div>
+                    <p>{{ projectpeak_academia.about }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    {% include 'features_content.html' %}
+    <!-- Feature End -->
+    <br><br>
+    {% include 'testimonials_content.html' %}
+    <br><br>
+    {% include 'faq_content.html' %}
+    <br><br>
+    {% include 'contact_form.html' %}
+{% endblock %}
