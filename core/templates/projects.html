@@ -81,7 +81,7 @@
         </div>
         <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search {{course.name}} Projects">
         <input type="text" name="q-course_projects" style="display: none;" value="{{course.name}}">
-        <div class="input-group-append">
+        <div class="input-group-append" onclick='showPreloader()'>
             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
         </div>
     </div>

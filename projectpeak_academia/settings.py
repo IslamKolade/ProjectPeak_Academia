@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-58m7$xoz_+47be@8x8x8l1rrn!+1pe3rx=fuh@$0dzz3&@qaaq"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://www.projectpeakacademia.com', 'localhost']
 
 
 # SMTP Configuration.

@@ -4,11 +4,11 @@
     <!-- Header Start -->
     <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom">
         <div class="container text-center py-5">
-            <h1 class="text-white display-1">Testimonials</h1>
+            <h1 class="text-white display-1">Hire Us</h1>
             <div class="d-inline-flex text-white mb-5">
-                <p class="m-0 text-uppercase"><a onclick='showPreloader()' class="text-white" href="/">Home</a></p>
+                <p class="m-0 text-uppercase"><a class="text-white" href="/" onclick='showPreloader()'>Home</a></p>
                 <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                <p class="m-0 text-uppercase">Testimonials</p>
+                <p class="m-0 text-uppercase">Hire Us</p>
             </div>
             <div class="mx-auto mb-5" style="width: 100%; max-width: 600px; border-radius:20px;">
                 <form action="{% url 'search_courses' %}" method="get">
@@ -38,14 +38,6 @@
         </div>
     </div>
     <!-- Header End -->
-
-
-    <!-- Testimonials Start -->
-    {% include 'Testimonials_content.html' %}
-    <!-- Testimonials Start -->
-    <br><br>
-    {% include 'faq_content.html' %}
     <br><br>
     {% include 'contact_form.html' %}
-
 {% endblock %}

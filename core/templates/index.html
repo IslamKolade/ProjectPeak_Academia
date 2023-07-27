@@ -3,8 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ProjectPeak Academia</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{projectpeak_academia.about}}">
+    <meta name="keywords" content="ProjectPeak Academia, online education, courses, projects, learning, expert instructors, innovative experience, final year project, paid project, graduation, faculty project, departmental project, university, univeristy course, univeristy project">
+    <meta name="author" content="DevDynamics">
+    <title>ProjectPeak Academia</title>
+
+    <meta property="og:title" content="ProjectPeak Academia">
+    <meta property="og:description" content="{{projectpeak_academia.description}}">
+    <meta property="og:image" content="{% static 'img/logo.jpg' %}">
+    <meta property="og:url" content="https://www.projectpeakacademia.com">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:title" content="ProjectPeak Academia">
+    <meta name="twitter:description" content="{{projectpeak_academia.description}}">
+    <meta name="twitter:image" content="{% static 'img/logo.jpg' %}">
+    <meta name="twitter:card" content="{% static 'img/logo.jpg' %}">
 
     <!-- Favicon -->
     <link href="{% static 'img/logo.jpg' %}" rel="icon">
@@ -88,6 +104,7 @@
                     <a onclick='showPreloader()' href="{% url 'about' %}" class="nav-item nav-link {% if request.path == "/about/" %}active{% endif %}">About</a>
                     <a onclick='showPreloader()' href="{% url 'features' %}" class="nav-item nav-link {% if request.path == "/features/" %}active{% endif %}">Our Features</a>
                     <a onclick='showPreloader()' href="{% url 'testimonials' %}" class="nav-item nav-link {% if request.path == "/testimonials/" %}active{% endif %}">Testimonials</a>
+                    <a onclick='showPreloader()' href="{% url 'hire_us' %}" class="nav-item nav-link {% if request.path == "/hire_us/" %}active{% endif %}">Hire Us</a>
                     <a onclick='showPreloader()' href="{% url 'faq' %}" class="nav-item nav-link {% if request.path == "/faq/" %}active{% endif %}">FAQs</a>
                     <a onclick='showPreloader()' href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == "/contact/" %}active{% endif %}">Contact</a>
                 </div>
@@ -110,7 +127,7 @@
                             <button class="btn btn-outline-light bg-white text-body px-4" type="button">Courses</button>
                         </div>
                         <input type="text" name="q-courses" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Courses">
-                        <div class="input-group-append">
+                        <div class="input-group-append" onclick='showPreloader()'>
                             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
                         </div>
                     </div>
@@ -122,7 +139,7 @@
                             <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
                         </div>
                         <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
-                        <div class="input-group-append">
+                        <div class="input-group-append" onclick='showPreloader()'>
                             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
                         </div>
                     </div>
@@ -231,7 +248,7 @@
     <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <!--WhatsApp-->
-    <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects."><img src="{% static 'img/Whatsapp.png' %}" alt="WhatsApp" style="border-radius:50%; width: 50px; height: 50px; bottom: 30px; right: 16px; z-index: 11; position: fixed;"></a>
+    <a href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects."><img src="{% static 'img/WhatsApp.png' %}" alt="WhatsApp" style="border-radius:50%; width: 50px; height: 50px; bottom: 30px; right: 16px; z-index: 11; position: fixed;"></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

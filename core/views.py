@@ -3,7 +3,7 @@ from .models import Course, Project, ProjectPeakAcademia, Project_Request
 from django.core.mail import EmailMessage
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 
@@ -26,6 +26,11 @@ def all_projects(request):
 def about(request):
     projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
     return render(request, 'about.html', {'projectpeak_academia': projectpeak_academia})
+
+def hire_us(request):
+    projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
+    return render(request, 'hire_us.html', {'projectpeak_academia': projectpeak_academia})
+
 
 def faq(request):
     projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
