@@ -4,6 +4,7 @@
         <div class="row align-items-center">
             <div class="col-lg-5 mb-5 mb-lg-0">
                 <div class="bg-light d-flex flex-column justify-content-center px-3" style="height: 400px;">
+                    {% if projectpeak_academia.address %}
                     <div class="d-flex align-items-center mb-5">
                         <div class="btn-icon bg-primary mr-2" style="height: 40px; width: 40px;">
                             <i class="fa fa-2x fa-map-marker-alt text-white" style="font-size: 25px;"></i>
@@ -13,6 +14,7 @@
                             <p class="m-0">{{projectpeak_academia.address}}</p>
                         </div>
                     </div>
+                    {% endif %}
                     <a href="tel:{{projectpeak_academia.phone_number}}" style="color:#898796; text-decoration: none;">
                     <div class="d-flex align-items-center mb-5">
                         <div class="btn-icon bg-secondary mr-2" style="height: 40px; width: 40px;">
@@ -26,7 +28,7 @@
                     </a>
                     <a href="mailto:{{projectpeak_academia.email}}" style="color:#898796; text-decoration: none;">
                     <div class="d-flex align-items-center">
-                        
+
                         <div class="btn-icon bg-warning mr-2" style="height: 40px; width: 40px;">
                             <i class="fa fa-2x fa-envelope text-white" style="font-size: 25px;"></i>
                         </div>
@@ -34,7 +36,7 @@
                             <h4>Email Us</h4>
                             <p class="m-0" style="font-size:12.4px;">{{projectpeak_academia.email}}</p>
                         </div>
-                        
+
                     </div>
                     </a>
                 </div>

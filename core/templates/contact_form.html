@@ -14,7 +14,7 @@
                 <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Email" name="email" autocomplete="email" required="required">
             </div>
             <div class="form-group">
-                <input min="11" type="number" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Phone Number" name="phone_number" autocomplete="phone_number" required="required">
+                <input minlength="11" maxlength="15" pattern="^\+?[0-9]+$" type="tel" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Phone Number" name="phone_number" autocomplete="phone_number" required="required">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Course of Study" required="required" name="course_of_study" autocomplete="course_of_study">
@@ -27,12 +27,12 @@
                     <option value="OND/NCE">OND/NCE</option>
                     <option value="PGD/MBA/MSC">PGD/MBA/MSC</option>
                 </select>
-            </div>                        
+            </div>
             <div class="form-group">
                 <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Project Title" required="required" name="project_title" autocomplete="off">
             </div>
             <div class="form-group">
-                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Your Department / Project Format (if any)" name="project_details" autocomplete="off" required="required"></textarea>
+                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Project Details (if any)" name="project_details" autocomplete="off"></textarea>
             </div>
             <div>
                 <button class="btn btn-primary py-3 px-5" type="submit">Submit Request</button>
@@ -58,5 +58,3 @@
         }
     });
 </script>
-
-

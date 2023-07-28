@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-md-4 mb-5">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>{{projectpeak_academia.address}}</p>
+                    {% if projectpeak_academia.address %}<p><i class="fa fa-map-marker-alt mr-2"></i>{{projectpeak_academia.address}}</p>{% endif %}
                     <a href="tel:{{projectpeak_academia.phone_number}}" style="text-decoration:none; color:#898796;"><p><i class="fa fa-phone-alt mr-2"></i>{{projectpeak_academia.phone_number}}</p></a>
                     <a href="mailto:{{projectpeak_academia.email}}" style="text-decoration:none; color:#898796; font-size: 15px;"><p><i class="fa fa-envelope mr-2"></i>{{projectpeak_academia.email}}</p></a>
                     <div class="d-flex justify-content-start mt-4">
