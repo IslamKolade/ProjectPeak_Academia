@@ -48,7 +48,7 @@
 </style>
 <div class="container">
     {% for course in courses %}
-    <a href="{% url 'course_projects' course.url %}" class="projects_link" onclick='showPreloader()'>
+    <a href="{% url 'course_projects' course.url %}" class="projects_link" onclick='showPreloader(event)'>
     <div class="course-list-item">
         <i class="course-icon fas fa-graduation-cap"></i>
         <span class="course-name">{{ course.name }}</span>

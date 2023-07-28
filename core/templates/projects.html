@@ -62,7 +62,7 @@
 </style>
 <div class="section-title text-center position-relative mb-5">
     <div style="float: left; font-size: 20px; cursor: pointer;">
-    <a onclick='showPreloader()' href="/" style="text-decoration: none; font-size:15px;">
+    <a onclick='showPreloader(event)' href="/" style="text-decoration: none; font-size:15px;">
         <i class="chevron-icon fas fa-home"></i> Home
     </a>
     </div>
@@ -81,7 +81,7 @@
         </div>
         <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search {{course.name}} Projects">
         <input type="text" name="q-course_projects" style="display: none;" value="{{course.name}}">
-        <div class="input-group-append" onclick='showPreloader()'>
+        <div class="input-group-append" onclick='showPreloader(event)'>
             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
         </div>
     </div>
@@ -91,7 +91,7 @@
 <div class="container">
     {% if projects %}
         {% for project in projects %}
-        <a onclick='showPreloader()' href="{% url 'project_details' project.url %}" class="project_link">
+        <a onclick='showPreloader(event)' href="{% url 'project_details' project.url %}" class="project_link">
         <div class="project-list-item">
             <i class="project-icon fas fa-book"></i>
             <span class="project-name">{{ project.name }}</span>

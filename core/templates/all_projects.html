@@ -66,7 +66,7 @@
         <div class="container text-center py-5">
             <h1 class="text-white display-1">Projects</h1>
             <div class="d-inline-flex text-white mb-5">
-                <p class="m-0 text-uppercase"><a class="text-white" onclick='showPreloader()' href="/">Home</a></p>
+                <p class="m-0 text-uppercase"><a class="text-white" onclick='showPreloader(event)' href="/">Home</a></p>
                 <i class="fa fa-angle-double-right pt-1 px-3"></i>
                 <p class="m-0 text-uppercase">Projects</p>
             </div>
@@ -77,7 +77,7 @@
                             <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
                         </div>
                         <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
-                        <div class="input-group-append" onclick='showPreloader()'>
+                        <div class="input-group-append" onclick='showPreloader(event)'>
                             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
     <div class="container">
         {% if projects %}
             {% for project in projects %}
-            <a href="{% url 'project_details' project.url %}" class="project_link" onclick='showPreloader()'>
+            <a href="{% url 'project_details' project.url %}" class="project_link" onclick='showPreloader(event)'>
             <div class="project-list-item">
                 <i class="project-icon fas fa-book"></i>
                 <span class="project-name">{{ project.name }}</span>

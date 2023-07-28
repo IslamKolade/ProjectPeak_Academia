@@ -98,15 +98,15 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a onclick='showPreloader()' href="/" class="nav-item nav-link {% if request.path == "/" %}active{% endif %}">Home</a>
-                    <a onclick='showPreloader()' href="{% url 'all_courses' %}" class="nav-item nav-link {% if request.path == "/all_courses/" %}active{% endif %}">All Courses</a>
-                    <a onclick='showPreloader()' href="{% url 'all_projects' %}" class="nav-item nav-link {% if request.path == "/all_projects/" %}active{% endif %}">All Projects</a>
-                    <a onclick='showPreloader()' href="{% url 'about' %}" class="nav-item nav-link {% if request.path == "/about/" %}active{% endif %}">About</a>
-                    <a onclick='showPreloader()' href="{% url 'features' %}" class="nav-item nav-link {% if request.path == "/features/" %}active{% endif %}">Our Features</a>
-                    <a onclick='showPreloader()' href="{% url 'testimonials' %}" class="nav-item nav-link {% if request.path == "/testimonials/" %}active{% endif %}">Testimonials</a>
-                    <a onclick='showPreloader()' href="{% url 'hire_us' %}" class="nav-item nav-link {% if request.path == "/hire_us/" %}active{% endif %}">Hire Us</a>
-                    <a onclick='showPreloader()' href="{% url 'faq' %}" class="nav-item nav-link {% if request.path == "/faq/" %}active{% endif %}">FAQs</a>
-                    <a onclick='showPreloader()' href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == "/contact/" %}active{% endif %}">Contact</a>
+                    <a onclick='showPreloader(event)' href="/" class="nav-item nav-link {% if request.path == "/" %}active{% endif %}">Home</a>
+                    <a onclick='showPreloader(event)' href="{% url 'all_courses' %}" class="nav-item nav-link {% if request.path == "/all_courses/" %}active{% endif %}">All Courses</a>
+                    <a onclick='showPreloader(event)' href="{% url 'all_projects' %}" class="nav-item nav-link {% if request.path == "/all_projects/" %}active{% endif %}">All Projects</a>
+                    <a onclick='showPreloader(event)' href="{% url 'about' %}" class="nav-item nav-link {% if request.path == "/about/" %}active{% endif %}">About</a>
+                    <a onclick='showPreloader(event)' href="{% url 'features' %}" class="nav-item nav-link {% if request.path == "/features/" %}active{% endif %}">Our Features</a>
+                    <a onclick='showPreloader(event)' href="{% url 'testimonials' %}" class="nav-item nav-link {% if request.path == "/testimonials/" %}active{% endif %}">Testimonials</a>
+                    <a onclick='showPreloader(event)' href="{% url 'hire_us' %}" class="nav-item nav-link {% if request.path == "/hire_us/" %}active{% endif %}">Hire Us</a>
+                    <a onclick='showPreloader(event)' href="{% url 'faq' %}" class="nav-item nav-link {% if request.path == "/faq/" %}active{% endif %}">FAQs</a>
+                    <a onclick='showPreloader(event)' href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == "/contact/" %}active{% endif %}">Contact</a>
                 </div>
                 <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects." class="btn btn-primary py-2 px-4 d-none d-lg-block">Contact Us</a>
             </div>
@@ -127,7 +127,7 @@
                             <button class="btn btn-outline-light bg-white text-body px-4" type="button">Courses</button>
                         </div>
                         <input type="text" name="q-courses" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Courses">
-                        <div class="input-group-append" onclick='showPreloader()'>
+                        <div class="input-group-append" onclick='showPreloader(event)'>
                             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                             <button class="btn btn-outline-light bg-white text-body px-4" type="button">Projects</button>
                         </div>
                         <input type="text" name="q-projects" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search Projects">
-                        <div class="input-group-append" onclick='showPreloader()'>
+                        <div class="input-group-append" onclick='showPreloader(event)'>
                             <button class="btn btn-secondary px-4 px-lg-5" type="submit">Search</button>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
                         <h1 class="display-4">First Choice For Projects That Ignite Imagination</h1>
                     </div>
-                    <p>{{ projectpeak_academia.about|truncatechars:315 }} <a onclick='showPreloader()' href="{% url 'about' %}">Read More</a></p>
+                    <p>{{ projectpeak_academia.about|truncatechars:315 }} <a onclick='showPreloader(event)' href="{% url 'about' %}">Read More</a></p>
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@
         <div class="container mt-5 pt-5">
             <div class="row">
                 <div class="col-md-6 mb-5">
-                    <a onclick='showPreloader()' href="/" class="navbar-brand">
+                    <a onclick='showPreloader(event)' href="/" class="navbar-brand">
                         <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-graduation-cap mr-3"></i>ProjectPeak <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Academia</h1>
                     </a>
                     <p class="m-0">{{projectpeak_academia.description}}</p>
@@ -219,11 +219,11 @@
                 <div class="col-md-4 mb-5">
                     <h3 class="text-white mb-4">Quick Links</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a onclick='showPreloader()' class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
-                        <a onclick='showPreloader()' class="text-white-50 mb-2" href="{% url 'features' %}"><i class="fa fa-angle-right mr-2"></i>Features</a>
-                        <a onclick='showPreloader()' class="text-white-50 mb-2" href="{% url 'faq' %}"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
-                        <a onclick='showPreloader()' class="text-white-50 mb-2" href="{% url 'testimonials' %}"><i class="fa fa-angle-right mr-2"></i>Testimonials</a>
-                        <a onclick='showPreloader()' class="text-white-50" href="{% url 'contact' %}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                        <a onclick='showPreloader(event)' class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
+                        <a onclick='showPreloader(event)' class="text-white-50 mb-2" href="{% url 'features' %}"><i class="fa fa-angle-right mr-2"></i>Features</a>
+                        <a onclick='showPreloader(event)' class="text-white-50 mb-2" href="{% url 'faq' %}"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
+                        <a onclick='showPreloader(event)' class="text-white-50 mb-2" href="{% url 'testimonials' %}"><i class="fa fa-angle-right mr-2"></i>Testimonials</a>
+                        <a onclick='showPreloader(event)' class="text-white-50" href="{% url 'contact' %}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                     </div>
                 </div>
             </div>
@@ -233,11 +233,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a onclick='showPreloader()' class="text-white" href="/">ProjectPeak Academia</a>. All Rights Reserved.
+                    <p class="m-0">Copyright &copy; <a onclick='showPreloader(event)' class="text-white" href="/">ProjectPeak Academia</a>. All Rights Reserved.
                     </p>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed and Developed by <a onclick='showPreloader()' class="text-white" href="https://www.fiverr.com/islamsanni">DevDynamics</a>
+                    <p class="m-0">Designed and Developed by <a onclick='showPreloader(event)' class="text-white" href="https://www.fiverr.com/islamsanni">DevDynamics</a>
                     </p>
                 </div>
             </div>
@@ -266,7 +266,7 @@
             $(".preloader-overlay").hide();
           });
 
-        function showPreloader() {
+        function showPreloader(event) {
             if (navigator.onLine) {
               $(".preloader-overlay").show();
           
@@ -277,6 +277,7 @@
               };
             } else {
               alert("You are currently offline. Please check your internet connection.");
+              event.preventDefault();
             }
         }
     </script>
