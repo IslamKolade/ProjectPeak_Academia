@@ -59,6 +59,10 @@ class Project_Request(models.Model):
     project_title = models.CharField(max_length=10000, null=True, blank=True)
     project_details = models.TextField()
 
+class Our_Services(models.Model):
+    service = models.CharField(max_length=10000)
+    service_description = models.TextField()
+
 
 @receiver(post_save, sender=Project)
 def update_projects_count(sender, instance, **kwargs):

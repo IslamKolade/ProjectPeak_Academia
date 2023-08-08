@@ -106,6 +106,7 @@
                     <a onclick='showPreloader(event)' href="{% url 'testimonials' %}" class="nav-item nav-link {% if request.path == "/testimonials/" %}active{% endif %}">Testimonials</a>
                     <a onclick='showPreloader(event)' href="{% url 'hire_us' %}" class="nav-item nav-link {% if request.path == "/hire_us/" %}active{% endif %}">Hire Us</a>
                     <a onclick='showPreloader(event)' href="{% url 'faq' %}" class="nav-item nav-link {% if request.path == "/faq/" %}active{% endif %}">FAQs</a>
+                    <a onclick='showPreloader(event)' href="{% url 'our_services' %}" class="nav-item nav-link {% if request.path == "/our_services/" %}active{% endif %}">Our Services</a>
                     <a onclick='showPreloader(event)' href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == "/contact/" %}active{% endif %}">Contact</a>
                 </div>
                 <a target="_blank" href="https://wa.me/{{ projectpeak_academia.whatsapp_number }}?text=Hello%20ProjectPeak%20Academia,%20I%20have%20a%20question%20about%20your%20projects." class="btn btn-primary py-2 px-4 d-none d-lg-block">Contact Us</a>

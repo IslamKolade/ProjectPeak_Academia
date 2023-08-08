@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Course, Project, ProjectPeakAcademia, Project_Request
+from .models import Course, Project, ProjectPeakAcademia, Project_Request, Our_Services
 from django.core.mail import EmailMessage
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -48,6 +48,11 @@ def testimonials(request):
 def contact(request):
     projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
     return render(request, 'contact.html', {'projectpeak_academia': projectpeak_academia})
+
+def our_services(request):
+    projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
+    services = Our_Services.objects.all().order_by("service")
+    return render(request, 'our_services.html', {'services': services,'projectpeak_academia': projectpeak_academia})
 
 
 
