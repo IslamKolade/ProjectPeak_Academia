@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "projectpeak_academia/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "projectpeak_academia/wsgi.py"
+      }
+    ]
+}
