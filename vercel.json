@@ -1,14 +1,27 @@
 {
-    "builds": [
+  "builds": [{
+      "src": "projectpeak_academia/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+  },
+  {
+    "src": "build.sh",
+    "use": "@vercel/static-build",
+    "config": {
+      "distDir": "staticfiles"
+    }
+  }
+  ],
+  "routes": [
       {
-        "src": "projectpeak_academia/wsgi.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
+          "src": "/static/(.*)",
+          "dest": "/static/$1"
+      },    
+
       {
-        "src": "/(.*)",
-        "dest": "projectpeak_academia/wsgi.py"
+          "src": "/(.*)",
+          "dest": "projectpeak_academia/wsgi.py"
       }
-    ]
+  ],
+  "outputDirectory": "staticfiles"
 }
