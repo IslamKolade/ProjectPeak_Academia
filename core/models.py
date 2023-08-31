@@ -13,7 +13,7 @@ class ProjectPeakAcademia(models.Model):
     phone_number = models.CharField(max_length=10000, null=True, blank=True)
     about = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    account_number = models.CharField(null=True, blank=True)
+    account_number = models.CharField(max_length=10000, null=True, blank=True)
     account_name = models.CharField(max_length=10000, null=True, blank=True)
     bank_name = models.CharField(max_length=10000, null=True, blank=True)
 
@@ -52,7 +52,7 @@ class Project(models.Model):
 
 class Project_Request(models.Model):
     name = models.CharField(max_length=10000, null=True, blank=True)
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=10000, null=True, blank=True)
     course_of_study = models.CharField(max_length=10000, null=True, blank=True)
     email = models.CharField(max_length=10000, null=True, blank=True)
     education_level = models.CharField(max_length=10000, null=True, blank=True)

@@ -125,8 +125,9 @@ def contact_form_submission(request):
             project_details=project_details,
             course_of_study=course_of_study,
         )
+       
         project_request.save()
-
+        
         projectpeak_academia = get_object_or_404(ProjectPeakAcademia, pk=1)
 
         email_subject = 'Project Request Received'
