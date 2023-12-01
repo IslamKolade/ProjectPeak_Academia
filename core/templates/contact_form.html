@@ -5,7 +5,7 @@
         <h5 style="font-size: 13px;" class="display-4">Tell us your unique project requirements or hire our professional writers for bespoke content creation.</h5>
     </div>
     <div class="contact-form">
-        {% comment %} <form action="{% url 'contact_form_submission' %}" method="POST"> {% endcomment %}
+        <form action="{% url 'contact_form_submission' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required" name="name" autocomplete="name">
